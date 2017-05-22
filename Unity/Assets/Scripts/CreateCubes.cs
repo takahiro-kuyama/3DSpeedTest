@@ -5,6 +5,7 @@ using System;
 
 public class CreateCubes : MonoBehaviour {
     public int cubeNum = 1000;
+    public bool moveCube = false;
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +15,9 @@ public class CreateCubes : MonoBehaviour {
             cube.transform.position = new Vector3((float)(rand.NextDouble() * 10 - 5), (float)(rand.NextDouble() * 10 - 5), (float)(rand.NextDouble() * 10 - 5));
             cube.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             cube.transform.parent = this.transform;
+            if (moveCube) {
+                cube.AddComponent<MovingCube>();
+            }
         }
     }
 }

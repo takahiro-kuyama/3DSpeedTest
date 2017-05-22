@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "MakeManyCubes.data.unityweb",
+"asmCodeUrl": "MakeManyCubes.asm.code.unityweb",
+"asmMemoryUrl": "MakeManyCubes.asm.memory.unityweb",
+"asmFrameworkUrl": "MakeManyCubes.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="./../js/aframe.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        window.onload = function () {
+            var fragment = document.createDocumentFragment();
+            var scene = document.querySelector('a-scene')
+            var wrapper = document.querySelector('#cubeWrapper');
+            for (var i = 0; i < 3000; i++) {
+                var box = document.createElement("a-box");
+                box.setAttribute('movingcube', { logtime: 'false' });
+                box.setAttribute('position', { x: Math.random() * 10 - 5, y: Math.random() * 10 - 5, z: Math.random() * 10 - 5 });
+                box.setAttribute('scale', { x: 0.1, y: 0.1, z: 0.1 });
+                fragment.appendChild(box);
+            }
+            wrapper.appendChild(fragment);
+        }
+
+        AFRAME.registerComponent('movingcube', {
+            schema: {
+                logtime: {type: 'boolean', default: "false"},
+                amplitude: { type: 'number', default: 0.2 },
+                period: { type: 'number', default: 2.0 },
+                moving_axis: {type: 'int'},
+                initialPosition: {type:'vec3'}
+            },
+            init:function(){
+                var el = this.el;
+                var data = this.data;
+                data.moving_axis = Math.floor(Math.random() * 3);
+                data.initialPosition = el.getAttribute('position');
+            },
+            tick: function (time, timeDelta) {
+                var el = this.el;
+                var data = this.data;
+                var moveDegree = data.amplitude * Math.sin(time / 1000 / data.period * 2 * Math.PI);
+                switch(data.moving_axis){
+                    case 0:
+                        el.setAttribute('position', 'x', data.initialPosition.x + moveDegree);
+                        break;
+                    case 1:
+                        el.setAttribute('position', 'y', data.initialPosition.y + moveDegree);
+                        break;
+                    case 2:
+                        el.setAttribute('position', 'z', data.initialPosition.z + moveDegree);
+                        break;
+                }
+                
+            }
+        });
+    </script>
+    <a-scene stats>
+        <a-sky color="blue"></a-sky>
+        <a-camera user-height="0" near="0.005" wasd-controls-enabled="false"></a-camera>
+        <a-entity id="cubeWrapper"></a-entity>
+    </a-scene>
+</body>
+</html>
