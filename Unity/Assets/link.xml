@@ -1,0 +1,16 @@
+<linker>
+	<assembly fullname="UnityEngine">
+		<type fullname="UnityEngine.MeshRenderer" preserve="all"/>
+		<type fullname="UnityEngine.BoxCollider" preserve="all"/>
+		<type fullname="UnityEngine.MeshFilter" preserve="all"/>
+		<type fullname="UnityEngine.Canvas" preserve="all"/>
+		<type fullname="UnityEngine.Sprite" preserve="all"/>
+		<type fullname="UnityEngine.CanvasRenderer" preserve="all"/>
+       </assembly>
+	<assembly fullname="UnityEngine.UI">
+               <type fullname="UnityEngine.CanvasScaler" preserve="all"/>
+               <type fullname="UnityEngine.Image" preserve="all"/>
+               <type fullname="UnityEngine.Shadow" preserve="all"/>
+               <type fullname="UnityEngine.Text" preserve="all"/>
+	</assembly>
+</linker>
