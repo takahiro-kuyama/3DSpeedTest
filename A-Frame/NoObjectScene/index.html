@@ -6,6 +6,16 @@
     <script src="./../js/aframe.min.js"></script>
 </head>
 <body>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.querySelector('a-scene').addEventListener('renderstart', function () {
+                var url = 'http://hogehogetest';
+                var request = new XMLHttpRequest();
+                request.open('GET', url);
+                request.send(null);
+            });
+        };
+    </script>
     <a-scene stats>
         <a-sky color="blue"></a-sky>
         <a-camera user-height="0" near="0.005" wasd-controls-enabled="false"></a-camera>
